@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./ani.css">
+    </head>
+    <body class="background">
+        <div class="head-style">
+            <h3 class = "head1-style">  ANIMI-FORMS </h3>
+        </div>
+        <form name="ANIMI-FORMS" onsubmit="formValidation(event)">
+            <p class = "heading"><b>ANIMI-Name</b></p>
+            <input type="text" id="ANIMI-Name" class="input-style text-align" placeholder="Enter Your Name" required><br>
+            <p class = "heading" ><b>ANIMI-(ORIGIN-COUNTRY)</b></p>
+            <select id="ANIMI-ORIGIN-COUNTRY" class="drop-down-style input-style ">
+                <option value="Pakistan">Select an option</option>
+                <option  value="India">India</option>
+                <option value="New Zealand">New Zealand</option>
+                <option  value="Australia">Australia</option>
+                <option value="Pakistan">Pakistan</option>
+              </select>
+            <p class = "heading"><b>No.of.Episodes</b></p>
+            <input id="Episodes-count" class="input-style text-align" placeholder="If yes enter number else no "><br>
+            <p class = "heading"><b>YOUR RATING</b></p>
+            <input type="text" id="your-rating" class="input-style text-align" placeholder="In number " required><br>
+            <p class = "heading"><b>REWARDS</b></p>
+            <input type="text" id="rewards" class="input-style text-align" placeholder="enter your rewards..." required><br>
+        </form>
+        <div style="margin-left: 50%; margin-top: -500px">
+            <p class = "heading "><b>DESCRIPTION ABOUT ANIMI</b></p>
+            <input id="Episodes-count" class="description-style input-style text-align" placeholder="I have...."><br>
+            <input id="submit-form" type="submit" value="SUBMIT" class="submit-button">
+        </div>
+    </body>
+    <script>
+        document.getElementById("submit-form").addEventListener("click", function formValidation(eve){
+            eve.preventDefault();
+            var name = document.forms["ANIMI-FORMS"]["ANIMI-Name"].value;
+            let count = document.forms["ANIMI-FORMS"]["Episodes-count"].value;
+            const specialChars = `/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+ /;`
+            const isSpecialCharsPresent = specialChars.split('').some(char => 
+                name.includes(char))
+            if (name == "") {
+                alert("Please Fill the details");
+            }
+            else if (name.length > 15){
+                alert("Name size of length exceeds");
+            } else if (name.length < 8) {
+                alert("Name size should be greater than 8");
+            } else if (isSpecialCharsPresent){
+                alert("special charecter is present");
+            } else if (isNaN(count)){
+                alert("No.of.Episodies must be numbers")
+            } else {
+                alert(true)
+                return true;
+            }
+        });
+    </script>
+</html>
